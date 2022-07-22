@@ -1,0 +1,479 @@
+Started by user anand
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /Users/anand/.jenkins/workspace/lockfilemaintainence
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout)
+[Pipeline] echo
+Setting up git repo
+[Pipeline] sh
++ cd /Users/anand/projects
++ rm -rf hello-world-react
++ git clone https://github.com/anand-iyer/hello-world-react
+Cloning into 'hello-world-react'...
++ echo 'Creating Branch name feature/lockfile-maintenance-job-jenkins-lockfilemaintainence-32'
+Creating Branch name feature/lockfile-maintenance-job-jenkins-lockfilemaintainence-32
++ cd /Users/anand/projects/hello-world-react
++ pwd
+/Users/anand/projects/hello-world-react
++ git checkout -b feature/lockfile-maintenance-job-jenkins-lockfilemaintainence-32
+Switched to a new branch 'feature/lockfile-maintenance-job-jenkins-lockfilemaintainence-32'
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Upgrade Dependencies)
+[Pipeline] sh
++ cd /Users/anand/projects/hello-world-react
+++ yarn --version
++ echo 'yarn version is 1.22.17'
+yarn version is 1.22.17
++ echo 'running yarn upgrade'
+running yarn upgrade
++ yarn upgrade
+yarn upgrade v1.22.17
+[1/4] Resolving packages...
+warning babel-core > babel-register > core-js@2.6.12: core-js@<3.23.3 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Some versions have web compatibility issues. Please, upgrade your dependencies to the actual version of core-js.
+warning babel-core > babel-runtime > core-js@2.6.12: core-js@<3.23.3 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Some versions have web compatibility issues. Please, upgrade your dependencies to the actual version of core-js.
+warning babel-preset-es2015@6.24.1: 🙌  Thanks for using Babel: we recommend using babel-preset-env now: please read https://babeljs.io/env to update!
+warning react > fbjs > core-js@1.2.7: core-js@<3.23.3 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Some versions have web compatibility issues. Please, upgrade your dependencies to the actual version of core-js.
+warning webpack > watchpack > chokidar@1.7.0: Chokidar 2 will break on node v14+. Upgrade to chokidar 3 with 15x less dependencies.
+warning webpack > node-libs-browser > url > querystring@0.2.0: The querystring API is considered Legacy. new code should use the URLSearchParams API instead.
+warning webpack > watchpack > chokidar > fsevents@1.2.13: fsevents 1 will break on node v14+ and could be using insecure binaries. Upgrade to fsevents 2.
+warning webpack > watchpack > chokidar > readdirp > micromatch > snapdragon > source-map-resolve@0.5.3: See https://github.com/lydell/source-map-resolve#deprecated
+warning webpack > watchpack > chokidar > readdirp > micromatch > snapdragon > source-map-resolve > source-map-url@0.4.1: See https://github.com/lydell/source-map-url#deprecated
+warning webpack > watchpack > chokidar > readdirp > micromatch > snapdragon > source-map-resolve > urix@0.1.0: Please see https://github.com/lydell/urix#deprecated
+warning webpack > watchpack > chokidar > readdirp > micromatch > snapdragon > source-map-resolve > resolve-url@0.2.1: https://github.com/lydell/resolve-url#deprecated
+[2/4] Fetching packages...
+[3/4] Linking dependencies...
+[4/4] Rebuilding all packages...
+success Saved lockfile.
+success Saved 294 new dependencies.
+info Direct dependencies
+├─ babel-core@6.26.3
+├─ babel-loader@6.4.1
+├─ babel-preset-es2015@6.24.1
+├─ babel-preset-react@6.24.1
+├─ react-dom@15.7.0
+├─ react@15.7.0
+├─ webpack-dev-server@1.16.5
+└─ webpack@1.15.0
+info All dependencies
+├─ accepts@1.3.8
+├─ acorn@3.3.0
+├─ align-text@0.1.4
+├─ amdefine@1.0.1
+├─ ansi-styles@2.2.1
+├─ anymatch@1.3.2
+├─ arr-flatten@1.1.0
+├─ array-flatten@1.1.1
+├─ asap@2.0.6
+├─ assert@1.5.0
+├─ assign-symbols@1.0.0
+├─ async-each@1.0.3
+├─ async@1.5.2
+├─ atob@2.1.2
+├─ babel-core@6.26.3
+├─ babel-generator@6.26.1
+├─ babel-helper-builder-react-jsx@6.26.0
+├─ babel-helper-call-delegate@6.24.1
+├─ babel-helper-define-map@6.26.0
+├─ babel-helpers@6.24.1
+├─ babel-loader@6.4.1
+├─ babel-plugin-check-es2015-constants@6.22.0
+├─ babel-plugin-syntax-flow@6.18.0
+├─ babel-plugin-transform-es2015-arrow-functions@6.22.0
+├─ babel-plugin-transform-es2015-block-scoped-functions@6.22.0
+├─ babel-plugin-transform-es2015-block-scoping@6.26.0
+├─ babel-plugin-transform-es2015-classes@6.24.1
+├─ babel-plugin-transform-es2015-computed-properties@6.24.1
+├─ babel-plugin-transform-es2015-destructuring@6.23.0
+├─ babel-plugin-transform-es2015-duplicate-keys@6.24.1
+├─ babel-plugin-transform-es2015-for-of@6.23.0
+├─ babel-plugin-transform-es2015-function-name@6.24.1
+├─ babel-plugin-transform-es2015-literals@6.22.0
+├─ babel-plugin-transform-es2015-modules-systemjs@6.24.1
+├─ babel-plugin-transform-es2015-modules-umd@6.24.1
+├─ babel-plugin-transform-es2015-object-super@6.24.1
+├─ babel-plugin-transform-es2015-parameters@6.24.1
+├─ babel-plugin-transform-es2015-shorthand-properties@6.24.1
+├─ babel-plugin-transform-es2015-spread@6.22.0
+├─ babel-plugin-transform-es2015-sticky-regex@6.24.1
+├─ babel-plugin-transform-es2015-template-literals@6.22.0
+├─ babel-plugin-transform-es2015-typeof-symbol@6.23.0
+├─ babel-plugin-transform-es2015-unicode-regex@6.24.1
+├─ babel-plugin-transform-flow-strip-types@6.22.0
+├─ babel-plugin-transform-react-display-name@6.25.0
+├─ babel-plugin-transform-react-jsx-self@6.22.0
+├─ babel-plugin-transform-react-jsx-source@6.22.0
+├─ babel-plugin-transform-react-jsx@6.24.1
+├─ babel-plugin-transform-regenerator@6.26.0
+├─ babel-plugin-transform-strict-mode@6.24.1
+├─ babel-preset-es2015@6.24.1
+├─ babel-preset-flow@6.23.0
+├─ babel-preset-react@6.24.1
+├─ babel-register@6.26.0
+├─ balanced-match@1.0.2
+├─ base@0.11.2
+├─ base64-js@1.5.1
+├─ batch@0.6.1
+├─ big.js@3.2.0
+├─ binary-extensions@1.13.1
+├─ bindings@1.5.0
+├─ body-parser@1.20.0
+├─ brace-expansion@1.1.11
+├─ braces@1.8.5
+├─ browserify-aes@0.4.0
+├─ browserify-zlib@0.1.4
+├─ buffer@4.9.2
+├─ builtin-status-codes@3.0.0
+├─ cache-base@1.0.1
+├─ call-bind@1.0.2
+├─ camelcase@1.2.1
+├─ center-align@0.1.3
+├─ chalk@1.1.3
+├─ chokidar@1.7.0
+├─ class-utils@0.3.6
+├─ cliui@2.1.0
+├─ clone@1.0.4
+├─ collection-visit@1.0.0
+├─ commondir@1.0.1
+├─ compressible@2.0.18
+├─ compression@1.7.4
+├─ concat-map@0.0.1
+├─ connect-history-api-fallback@1.6.0
+├─ console-browserify@1.2.0
+├─ constants-browserify@1.0.0
+├─ content-disposition@0.5.4
+├─ convert-source-map@1.8.0
+├─ cookie-signature@1.0.6
+├─ cookie@0.5.0
+├─ copy-descriptor@0.1.1
+├─ core-js@2.6.12
+├─ core-util-is@1.0.3
+├─ create-react-class@15.7.0
+├─ crypto-browserify@3.3.0
+├─ decamelize@1.2.0
+├─ decode-uri-component@0.2.0
+├─ detect-indent@4.0.0
+├─ domain-browser@1.2.0
+├─ ee-first@1.1.1
+├─ emojis-list@2.1.0
+├─ encoding@0.1.13
+├─ enhanced-resolve@0.9.1
+├─ escape-string-regexp@1.0.5
+├─ eventemitter3@4.0.7
+├─ events@1.1.1
+├─ eventsource@2.0.2
+├─ expand-brackets@0.1.5
+├─ expand-range@1.8.2
+├─ express@4.18.1
+├─ extglob@0.3.2
+├─ faye-websocket@0.11.4
+├─ file-uri-to-path@1.0.0
+├─ filename-regex@2.0.1
+├─ fill-range@2.2.4
+├─ finalhandler@1.2.0
+├─ find-cache-dir@0.1.1
+├─ find-up@1.1.2
+├─ follow-redirects@1.15.1
+├─ for-in@1.0.2
+├─ for-own@0.1.5
+├─ forwarded@0.2.0
+├─ fsevents@1.2.13
+├─ get-value@2.0.6
+├─ glob-base@0.3.0
+├─ globals@9.18.0
+├─ graceful-fs@4.2.10
+├─ has-ansi@2.0.0
+├─ has-flag@1.0.0
+├─ has-symbols@1.0.3
+├─ has-value@1.0.0
+├─ has@1.0.3
+├─ home-or-tmp@2.0.0
+├─ http-parser-js@0.5.8
+├─ http-proxy-middleware@0.17.4
+├─ http-proxy@1.18.1
+├─ https-browserify@0.0.1
+├─ ieee754@1.2.1
+├─ indexof@0.0.1
+├─ inherits@2.0.4
+├─ interpret@0.6.6
+├─ invariant@2.2.4
+├─ ipaddr.js@1.9.1
+├─ is-accessor-descriptor@1.0.0
+├─ is-binary-path@1.0.1
+├─ is-data-descriptor@1.0.0
+├─ is-descriptor@1.0.2
+├─ is-dotfile@1.0.3
+├─ is-equal-shallow@0.1.3
+├─ is-finite@1.1.0
+├─ is-plain-object@2.0.4
+├─ is-posix-bracket@0.1.1
+├─ is-primitive@2.0.0
+├─ is-stream@1.1.0
+├─ is-windows@1.0.2
+├─ isarray@1.0.0
+├─ isomorphic-fetch@2.2.1
+├─ js-tokens@4.0.0
+├─ jsesc@1.3.0
+├─ json5@0.5.1
+├─ kind-of@3.2.2
+├─ lazy-cache@1.0.4
+├─ loader-utils@0.2.17
+├─ lodash@4.17.21
+├─ longest@1.0.1
+├─ map-visit@1.0.0
+├─ math-random@1.0.4
+├─ media-typer@0.3.0
+├─ memory-fs@0.3.0
+├─ merge-descriptors@1.0.1
+├─ methods@1.1.2
+├─ micromatch@2.3.11
+├─ mime-db@1.52.0
+├─ mime-types@2.1.35
+├─ mime@1.6.0
+├─ minimatch@3.1.2
+├─ minimist@1.2.6
+├─ mixin-deep@1.3.2
+├─ mkdirp@0.5.6
+├─ ms@2.1.3
+├─ nan@2.16.0
+├─ nanomatch@1.2.13
+├─ negotiator@0.6.3
+├─ node-fetch@1.7.3
+├─ node-libs-browser@0.7.0
+├─ normalize-path@2.1.1
+├─ object-copy@0.1.0
+├─ object-inspect@1.12.2
+├─ object.omit@2.0.1
+├─ on-headers@1.0.2
+├─ open@0.0.5
+├─ optimist@0.6.1
+├─ os-browserify@0.2.1
+├─ os-homedir@1.0.2
+├─ os-tmpdir@1.0.2
+├─ pako@0.2.9
+├─ parse-glob@3.0.4
+├─ pascalcase@0.1.1
+├─ path-browserify@0.0.0
+├─ path-exists@2.1.0
+├─ path-to-regexp@0.1.7
+├─ pbkdf2-compat@2.0.1
+├─ pinkie@2.0.4
+├─ pkg-dir@1.0.0
+├─ posix-character-classes@0.1.1
+├─ preserve@0.2.0
+├─ private@0.1.8
+├─ process-nextick-args@2.0.1
+├─ process@0.11.10
+├─ promise@7.3.1
+├─ proxy-addr@2.0.7
+├─ prr@1.0.1
+├─ punycode@1.4.1
+├─ querystring-es3@0.2.1
+├─ querystring@0.2.0
+├─ querystringify@2.2.0
+├─ randomatic@3.1.1
+├─ raw-body@2.5.1
+├─ react-dom@15.7.0
+├─ react-is@16.13.1
+├─ react@15.7.0
+├─ readdirp@2.2.1
+├─ regenerate@1.4.2
+├─ regenerator-runtime@0.11.1
+├─ regenerator-transform@0.10.1
+├─ regex-cache@0.4.4
+├─ regexpu-core@2.0.0
+├─ regjsgen@0.2.0
+├─ regjsparser@0.1.5
+├─ remove-trailing-separator@1.1.0
+├─ repeating@2.0.1
+├─ resolve-url@0.2.1
+├─ ret@0.1.15
+├─ right-align@0.1.3
+├─ ripemd160@0.2.0
+├─ safe-buffer@5.1.2
+├─ safer-buffer@2.1.2
+├─ serve-index@1.9.1
+├─ serve-static@1.15.0
+├─ set-value@2.0.1
+├─ setimmediate@1.0.5
+├─ sha.js@2.2.6
+├─ side-channel@1.0.4
+├─ slash@1.0.0
+├─ snapdragon-node@2.1.1
+├─ snapdragon-util@3.0.1
+├─ sockjs-client@1.6.1
+├─ sockjs@0.3.24
+├─ source-list-map@0.1.8
+├─ source-map-resolve@0.5.3
+├─ source-map-support@0.4.18
+├─ source-map-url@0.4.1
+├─ split-string@3.1.0
+├─ static-extend@0.1.2
+├─ stream-browserify@2.0.2
+├─ stream-cache@0.0.2
+├─ stream-http@2.8.3
+├─ string_decoder@0.10.31
+├─ supports-color@3.2.3
+├─ tapable@0.1.10
+├─ time-stamp@2.2.0
+├─ timers-browserify@2.0.12
+├─ to-arraybuffer@1.0.1
+├─ to-fast-properties@1.0.3
+├─ to-object-path@0.3.0
+├─ to-regex-range@2.1.1
+├─ toidentifier@1.0.1
+├─ trim-right@1.0.1
+├─ tty-browserify@0.0.0
+├─ ua-parser-js@0.7.31
+├─ uglify-js@2.7.5
+├─ uglify-to-browserify@1.0.2
+├─ union-value@1.0.1
+├─ unset-value@1.0.0
+├─ urix@0.1.0
+├─ url-parse@1.5.10
+├─ url@0.11.0
+├─ use@3.1.1
+├─ util-deprecate@1.0.2
+├─ util@0.10.4
+├─ utils-merge@1.0.1
+├─ uuid@8.3.2
+├─ vm-browserify@0.0.4
+├─ watchpack@0.2.9
+├─ webpack-core@0.6.9
+├─ webpack-dev-middleware@1.12.2
+├─ webpack-dev-server@1.16.5
+├─ webpack@1.15.0
+├─ websocket-driver@0.7.4
+├─ websocket-extensions@0.1.4
+├─ whatwg-fetch@3.6.2
+├─ window-size@0.1.0
+├─ wordwrap@0.0.3
+├─ xtend@4.0.2
+└─ yargs@3.10.0
+Done in 10.24s.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (create PR)
+[Pipeline] sh
++ cd /Users/anand/projects/hello-world-react
++ printenv
+JENKINS_NODE_COOKIE=faed3f71-4b2c-46b3-9fbd-cc0d5dedc7cd
+BUILD_URL=http://localhost:8080/job/lockfilemaintainence/32/
+TERM_PROGRAM=Apple_Terminal
+SHELL=/bin/bash
+TERM=xterm-256color
+HUDSON_SERVER_COOKIE=d62b1718907eda27
+STAGE_NAME=create PR
+TMPDIR=/var/folders/g4/5d9wfvm92h9b1xmqg9yrb0gc0000gn/T/
+BUILD_TAG=jenkins-lockfilemaintainence-32
+Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.JaJKm2n13l/Render
+TERM_PROGRAM_VERSION=421.2
+branch_name=feature/lockfile-maintenance-job-jenkins-lockfilemaintainence-32
+OLDPWD=/Users/anand/.jenkins/workspace/lockfilemaintainence
+TERM_SESSION_ID=BE1F9050-C904-429C-B3BC-9CD450DD8C76
+JOB_URL=http://localhost:8080/job/lockfilemaintainence/
+WORKSPACE=/Users/anand/.jenkins/workspace/lockfilemaintainence
+RUN_CHANGES_DISPLAY_URL=http://localhost:8080/job/lockfilemaintainence/32/display/redirect?page=changes
+USER=anand
+SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.y8YjrAOBCh/Listeners
+RUN_ARTIFACTS_DISPLAY_URL=http://localhost:8080/job/lockfilemaintainence/32/display/redirect?page=artifacts
+__CF_USER_TEXT_ENCODING=0x1F5:0x0:0x0
+JENKINS_HOME=/Users/anand/.jenkins
+PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Frameworks/Mono.framework/Versions/Current/Commands
+RUN_DISPLAY_URL=http://localhost:8080/job/lockfilemaintainence/32/display/redirect
+PWD=/Users/anand/projects/hello-world-react
+HUDSON_URL=http://localhost:8080/
+LANG=en_US.UTF-8
+JOB_NAME=lockfilemaintainence
+XPC_FLAGS=0x0
+BUILD_DISPLAY_NAME=#32
+JENKINS_URL=http://localhost:8080/
+BUILD_ID=32
+XPC_SERVICE_NAME=0
+JOB_BASE_NAME=lockfilemaintainence
+RUN_TESTS_DISPLAY_URL=http://localhost:8080/job/lockfilemaintainence/32/display/redirect?page=tests
+SHLVL=3
+HOME=/Users/anand
+CI=true
+WORKSPACE_TMP=/Users/anand/.jenkins/workspace/lockfilemaintainence@tmp
+EXECUTOR_NUMBER=0
+JENKINS_SERVER_COOKIE=durable-40ad5ed7ecacedb70288577b035b68db3eae208d566ffe0ab290dcf97089f2f1
+NODE_LABELS=built-in
+LOGNAME=anand
+HUDSON_HOME=/Users/anand/.jenkins
+NODE_NAME=built-in
+JOB_DISPLAY_URL=http://localhost:8080/job/lockfilemaintainence/display/redirect
+BUILD_NUMBER=32
+HUDSON_COOKIE=6e43da71-74ca-4093-974a-75107931fb76
+SECURITYSESSIONID=186a8
+JAVA_MAIN_CLASS_6452=Main
+_=/usr/bin/printenv
++ echo 'branch name used for checkin is feature/lockfile-maintenance-job-jenkins-lockfilemaintainence-32'
+branch name used for checkin is feature/lockfile-maintenance-job-jenkins-lockfilemaintainence-32
++ git branch
+* feature/lockfile-maintenance-job-jenkins-lockfilemaintainence-32
+  master
+++ feature/lockfile-maintenance-job-jenkins-lockfilemaintainence-32
+/Users/anand/.jenkins/workspace/lockfilemaintainence@tmp/durable-de4b4f35/script.sh: line 6: feature/lockfile-maintenance-job-jenkins-lockfilemaintainence-32: No such file or directory
++ touch test_pr.txt
++ git add yarn.lock
+++ feature/lockfile-maintenance-job-jenkins-lockfilemaintainence-32
+/Users/anand/.jenkins/workspace/lockfilemaintainence@tmp/durable-de4b4f35/script.sh: line 9: feature/lockfile-maintenance-job-jenkins-lockfilemaintainence-32: No such file or directory
++ git add test_pr.txt
++ git commit -m 'task:update lockfile'
+[feature/lockfile-maintenance-job-jenkins-lockfilemaintainence-32 c83ff49] task:update lockfile
+ Committer: Anand Iyer <anand@Anands-MacBook-Pro.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 test_pr.txt
++ echo 'Setting upstream origin'
+Setting upstream origin
++ git push --set-upstream origin feature/lockfile-maintenance-job-jenkins-lockfilemaintainence-32
+remote: 
+remote: Create a pull request for 'feature/lockfile-maintenance-job-jenkins-lockfilemaintainence-32' on GitHub by visiting:        
+remote:      https://github.com/anand-iyer/hello-world-react/pull/new/feature/lockfile-maintenance-job-jenkins-lockfilemaintainence-32        
+remote: 
+To https://github.com/anand-iyer/hello-world-react
+ * [new branch]      feature/lockfile-maintenance-job-jenkins-lockfilemaintainence-32 -> feature/lockfile-maintenance-job-jenkins-lockfilemaintainence-32
+Branch 'feature/lockfile-maintenance-job-jenkins-lockfilemaintainence-32' set up to track remote branch 'feature/lockfile-maintenance-job-jenkins-lockfilemaintainence-32' from 'origin'.
++ export 'PR_BODY={"head":"feature/lockfile-maintenance-job-jenkins-lockfilemaintainence-32","base":"master","title":"lockfile maintenance"}'
++ PR_BODY='{"head":"feature/lockfile-maintenance-job-jenkins-lockfilemaintainence-32","base":"master","title":"lockfile maintenance"}'
++ echo 'PR_BODY is {"head":"feature/lockfile-maintenance-job-jenkins-lockfilemaintainence-32","base":"master","title":"lockfile maintenance"}'
+PR_BODY is {"head":"feature/lockfile-maintenance-job-jenkins-lockfilemaintainence-32","base":"master","title":"lockfile maintenance"}
++ echo 'Curl post'
+Curl post
++ curl -X POST -H Accept:application/vnd.github.v3+json -u : http://github.com/anand-iyer/hello-world-react/pulls -d '{"head":"feature/lockfile-maintenance-job-jenkins-lockfilemaintainence-32","base":"master","title":"lockfile maintenance"}'
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100   122    0     0  100   122      0   2176 --:--:-- --:--:-- --:--:--  2178
++ echo 'PR created successfully go to  https://github.com/anand-iyer/hello-world-react/pulls'
+PR created successfully go to  https://github.com/anand-iyer/hello-world-react/pulls
++ echo 'verify job started for master branch and PR is success and then merge'
+verify job started for master branch and PR is success and then merge
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
