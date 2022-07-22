@@ -1,0 +1,62 @@
+pipeline {
+    agent any
+    
+    environment {
+       branch_name="feature/lockfile-maintenance-job-${BUILD_TAG}"
+   }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                echo 'Setting up git repo';
+            sh '''                
+                cd "/Users/anand/projects";
+                rm -rf hello-world-react
+                git clone "https://github.com/anand-iyer/hello-world-react";
+                # export BRANCH_NAME="feature/lockfile-maintenance-job-$(date +%m-%d-%Y-%H-%M-%S)"
+                echo "Creating Branch name $branch_name"
+                cd "/Users/anand/projects/hello-world-react"
+                pwd
+                git checkout -b $branch_name'''
+            }
+        }
+        
+        
+      stage('Upgrade Dependencies') {
+            steps {
+              sh '''
+                    cd "/Users/anand/projects/hello-world-react"
+                    echo "yarn version is `yarn --version`"
+                    echo "running yarn upgrade"
+                    yarn upgrade'''
+            }
+        }
+        
+       stage('create PR') {
+            steps {
+                sh '''
+                    cd "/Users/anand/projects/hello-world-react"
+                    printenv
+                    echo "branch name used for checkin is $branch_name"
+                    git branch  # current workarea
+                    touch test_pr`$branch_name`.txt
+                    git add yarn.lock
+                    # added this for testing 
+                    git add test_pr`$branch_name`.txt
+                    git commit -m "task:update lockfile" 
+                    echo "Setting upstream origin"
+                    git push --set-upstream origin $branch_name
+                    export PR_BODY='{"head":''"'${branch_name}'"'',"base":"master","title":"lockfile maintenance"}'
+                    echo "PR_BODY is $PR_BODY"
+                    echo "Curl post"
+                    curl -X POST \
+                    -H "Accept:application/vnd.github.v3+json" \
+                    -u $GIT_AUTHOR_NAME:$GH_TOKEN http://github.com/anand-iyer/hello-world-react/pulls \
+                    -d "$PR_BODY"
+                    echo "PR created successfully go to  https://github.com/anand-iyer/hello-world-react/pulls"
+                    echo "verify job started for master branch and PR is success and then merge"'''
+            }
+        }
+    }
+}
+
